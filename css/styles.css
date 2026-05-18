@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #eef2f5;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+#canvas-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#ui-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  max-width: 350px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#ui-overlay h1 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #0284c7;
+}
+
+#ui-overlay p {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.stat {
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #cbd5e1;
+  margin: 10px 0;
+}
+
+#controls {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.channel-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.channel-row input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.color-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+#btn-execute { background-color: #0ea5e9; }
+#btn-all { background-color: #64748b; }

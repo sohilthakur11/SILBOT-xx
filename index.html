@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SILBOT — 3D Programmable Matter Transport Simulator</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <div id="ui-overlay">
+    <h1>Programmable Matter Simulator</h1>
+    <p>Select multiple channels to observe simultaneous multi-agent expansion and contraction.</p>
+    <hr class="divider">
+    <p>Active Agents: <span id="agent-count" class="stat">0</span></p>
+    <p>Total Pushes: <span id="sim-step" class="stat">0</span></p>
+
+    <div id="controls">
+      <label class="channel-row">
+        <input type="checkbox" id="chk-0" checked>
+        <span class="color-box" style="background:#ef4444"></span> Line 1 (Red)
+      </label>
+      <label class="channel-row">
+        <input type="checkbox" id="chk-1" checked>
+        <span class="color-box" style="background:#3b82f6"></span> Line 2 (Blue)
+      </label>
+      <label class="channel-row">
+        <input type="checkbox" id="chk-2">
+        <span class="color-box" style="background:#10b981"></span> Line 3 (Green)
+      </label>
+      <label class="channel-row">
+        <input type="checkbox" id="chk-3">
+        <span class="color-box" style="background:#f59e0b"></span> Line 4 (Orange)
+      </label>
+      <label class="channel-row">
+        <input type="checkbox" id="chk-4">
+        <span class="color-box" style="background:#8b5cf6"></span> Line 5 (Purple)
+      </label>
+
+      <div class="btn-group">
+        <button class="btn" id="btn-execute" type="button">Push Selected</button>
+        <button class="btn" id="btn-all" type="button">Push All 5</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/lattice.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/structure.js"></script>
+  <script src="js/agent.js"></script>
+  <script src="js/simulator.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
