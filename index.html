@@ -13,7 +13,7 @@
 
   <div id="ui-overlay" class="side-panel">
     <h1>Programmable Matter Simulator</h1>
-    <p>Click on the top of the structure (purple nodes) to place a funnel.</p>
+    <p><strong>Shift + Click</strong> on the top of the structure to place a funnel, or use the buttons below.</p>
     <hr class="divider">
     
     <div class="stats-container">
@@ -23,6 +23,10 @@
 
     <div id="controls">
       <div class="btn-group">
+        <button class="btn" id="btn-put-funnel" type="button" style="background-color: #3b82f6;">Put Funnel</button>
+        <button class="btn" id="btn-remove-funnel" type="button" style="background-color: #f59e0b;">Remove Funnel</button>
+      </div>
+      <div class="btn-group" style="margin-top: 10px;">
         <button class="btn" id="btn-autofill" type="button" disabled>Start Auto-Fill</button>
       </div>
     </div>
@@ -31,8 +35,7 @@
     
     <div id="event-log-wrapper">
       <h2>Event Log</h2>
-      <div id="event-log">
-        </div>
+      <div id="event-log"></div>
     </div>
   </div>
 

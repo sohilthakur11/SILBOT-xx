@@ -1,28 +1,28 @@
 (function (SILBOT) {
   function setup(simulator, camera, stats) {
     const btnAutoFill = document.getElementById('btn-autofill');
+    const btnPutFunnel = document.getElementById('btn-put-funnel');
+    const btnRemoveFunnel = document.getElementById('btn-remove-funnel');
     const eventLog = document.getElementById('event-log');
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     let isAutoFilling = false;
 
-    // The Logger Function
     function logMessage(message) {
       const time = new Date().toLocaleTimeString('en-US', { hour12: false });
       const div = document.createElement('div');
       div.className = 'log-entry';
       div.innerHTML = `<span class="log-time">[${time}]</span> ${message}`;
       eventLog.appendChild(div);
-      // Auto-scroll to bottom
       eventLog.scrollTop = eventLog.scrollHeight;
     }
 
-    // Attach logger to simulator
     simulator.setLogger(logMessage);
     logMessage("System initialized. Awaiting input...");
 
     window.addEventListener('pointerdown', (event) => {
       if (isAutoFilling || event.target.tagName !== 'CANVAS') return;
+      if (!event.shiftKey) return; 
 
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -36,10 +36,28 @@
           if (clickedNode && clickedNode.y >= SILBOT.Config.BLOCK.height - 2) {
              simulator.placeFunnelAtNode(clickedNode);
              btnAutoFill.disabled = false;
-             btnAutoFill.style.backgroundColor = "#10b981"; // Green
+             btnAutoFill.style.backgroundColor = "#10b981"; 
           }
         }
       }
+    });
+
+    // BUG FIX: Stopped auto-placement. Now it just reminds you how to place it manually.
+    btnPutFunnel.addEventListener('click', () => {
+        if (isAutoFilling) return;
+        logMessage("ACTION: Please hold SHIFT and click on the purple nodes at the top to place a funnel.");
+    });
+
+    btnRemoveFunnel.addEventListener('click', () => {
+        simulator.removeFunnels();
+        if (isAutoFilling) {
+            isAutoFilling = false;
+            simulator.toggleAutoFill(isAutoFilling);
+            logMessage("Auto-fill stopped.");
+            btnAutoFill.innerText = "Start Auto-Fill";
+        }
+        btnAutoFill.disabled = true;
+        btnAutoFill.style.backgroundColor = "";
     });
 
     btnAutoFill.addEventListener('click', () => {
